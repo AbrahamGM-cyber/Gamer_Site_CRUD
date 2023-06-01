@@ -54,7 +54,7 @@
     --z-fixed: 100;
     --z-modal: 1000;
     /*=========== Opacidad ==========*/
-    --opacidad-negro: 0.5;
+    --opacidad-negro: 0.8;
 }
 
 
@@ -484,7 +484,7 @@ img {
 
 .bg_about {
     position: relative;
-    height: 70vh;
+    height: 75vh;
     width: 100%;
     background-image: linear-gradient(rgba(0, 0, 0, var(--opacidad-negro)), rgba(0, 0, 0, var(--opacidad-negro))), url(/img/Imagen_1.jpg);
     background-size: cover;
@@ -496,7 +496,7 @@ img {
 .bg_catalogo {
     background-image: linear-gradient(rgba(0, 0, 0, var(--opacidad-negro)), rgba(0, 0, 0, var(--opacidad-negro))), url(/img/Imagen_3.jpg);
     position: relative;
-    height: 70vh;
+    height: 75vh;
     width: 100%;
     background-size: cover;
     display: flex;
