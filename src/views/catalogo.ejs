@@ -18,6 +18,48 @@
                 </div>
             </div>
         </section>
+        <div class="container mt-5 table reponsive">
+            <table class="table">
+<thead class="thead-dark">
+    <tr>
+        <th>
+            nombre
+        </th>
+        <th>
+            descripcion
+        </th>
+        <th>
+            requisitos
+        </th>
+        <th>
+            fecha de lanzamiento
+        </th>
+    </tr>
+</thead>
+<tbody class="check-body">
+    <% if (data){%>
+<%for(var i=0; i< data.length; i++ ) { %>
+
+    <tr>
+        <td class="cuerpo">
+            <%= data[i].nombre_juego %>
+        </td>
+        <td class="cuerpo">
+            <%= data[i].descripcion %>
+        </td>
+        <td class="cuerpo">
+            <%= data[i].requisitos_sistema %>
+        </td>
+        <td class="cuerpo">
+            <%= data[i].fecha_lanzamiento %>
+        </td>
+    </tr>
+
+<%}%>
+    <%}%>
+</tbody>
+            </table>
+        </div>
     </main>
 
     <%- include('partials/footer.ejs') %>
