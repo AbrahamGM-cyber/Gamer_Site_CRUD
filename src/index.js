@@ -19,11 +19,11 @@ app.use(morgan('dev'));
 app.use(cookieParser());
 app.use(express.json());
 app.use(myconnection(mysql, {
-    host: 'bnlaaox1boalnkpet9bx-mysql.services.clever-cloud.com',
-    user: 'uvqbbmuh71wargnx',
-    password: 'mnyh2R5ydFputN00kqNs',
+    host: '127.0.0.1',
+    user: 'root',
+    password: '',
     port: 3306,
-    database: 'bnlaaox1boalnkpet9bx'
+    database: 'gamersite'
 }, 'single'));
 
 app.use(express.urlencoded({ extended: false }));

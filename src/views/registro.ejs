@@ -1,0 +1,41 @@
+<%- include('partials/user-style.ejs') %>
+
+    <body class="body">
+        <div class="login-box">
+            <div class="login-content">
+                <h2 class="login-title">Login</h2>
+                <form action="#">
+                    <div class="user-details">
+                        <div class="input-box">
+                            <input type="text" class="text" placeholder="Nombre Completo" required>
+                            <span class="details"> Full Name</span>
+                        </div>
+                        <div class="input-box">
+                            <input type="text" class="text" placeholder="Correo Electronico" required>
+                            <span class="details"> Email</span>
+                        </div>
+                        <div class="input-box">
+                            <input type="texto" class="text" placeholder="Numero Telefonico" required>
+                            <span class="details"> phone</span>
+
+                        </div>
+                        <div class="input-box">
+                            <input type="text" class="text" placeholder="Contraseña" required>
+                            <span class="details"> Password</span>
+
+                        </div>
+                    </div>
+                    <div class="remember-forgot">
+                        <label><input type="checkbox">Remember me</label>
+                        <a href="#">Olvidaste tu contraseña?</a>
+                    </div>
+                    <button type="submit" class="btn">Login</button>
+                    <div class="login-register">
+                        <p> No tiene cuenta?
+                            <a href="" class="register-link">Registrate</a>
+                        </p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </body>
