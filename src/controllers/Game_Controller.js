@@ -1,3 +1,6 @@
+const passport = require('passport');
+const bcrypt = require('bcryptjs');
+
 const controller = {};
 //home
 controller.home = (req, res) => { res.render('main.ejs') };
@@ -15,28 +18,13 @@ controller.catalogo = (req, res) => {
     });
 };
 
-controller.busqueda = (req, res) => {
-    const busqueda = req.params;
-
-    req.getConnection((err, conn) => {
-        conn.query('WHERE nombre_juego LIKE= ?', [busqueda], 'OR nombre_juego LIKE= ?', [busqueda], (err, Juegos) => {
-            if (err) {
-                res.json(err);
-            }
-            res.render('catalogo.ejs', {
-                data: Juegos[0]
-            });
-        });
-    });
-};
-
 //about
 controller.about = (req, res) => { res.render('about.ejs') };
 
 //login
 controller.login = (req, res) => { res.render('login.ejs') };
 
-controller.signup = (req, res) => {
+controller.signin = (req, res) => {
     console.log(req.body)
     res.send('received')
 };
@@ -44,6 +32,21 @@ controller.signup = (req, res) => {
 
 //resgitro
 controller.registro = (req, res) => { res.render('registro.ejs') };
+
+controller.signup = (req, res) => {
+    const newUser = req.body;
+
+    bcrypt.hash(newUser.contraseña, 12).then(hash => {
+        newUser.contraseña = hash;
+
+        req.getConnection((err, conn) => {
+            conn.query('INSERT INTO usuarios set ?', [newUser], (err, usuarios) => {
+                res.redirect('/')
+            });
+        });
+    });
+};
+
 
 
 //contactme

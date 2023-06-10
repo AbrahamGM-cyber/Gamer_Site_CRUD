@@ -1407,7 +1407,7 @@ td {
         justify-content: flex-start;
     }
     .container_text {
-        flex-basis: 45%;
+        flex-basis: 55%;
         padding-left: 40px;
         overflow: hidden;
     }

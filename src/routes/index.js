@@ -13,11 +13,15 @@ router.get('/about', GameController.about);
 
 router.get('/login', GameController.login);
 
-router.post('/login', GameController.signup);
+router.post('/login', GameController.signin);
 
 
 /* Registro */
 router.get('/registro', GameController.registro);
+
+router.post('/signup', GameController.signup);
+
+/* Contact */
 
 router.get('/contact', GameController.contactme);
 

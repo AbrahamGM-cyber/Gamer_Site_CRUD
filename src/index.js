@@ -3,11 +3,14 @@ const path = require('path');
 const morgan = require('morgan');
 const mysql = require('mysql');
 const myconnection = require('express-myconnection');
-const cookieParser = require('cookie-parser')
+const cookieParser = require('cookie-parser');
+const sesion = require('express-session')
+const passport = require('passport');
 
 //iniciarlizarse
 const app = express();
 const { urlencoded } = require('express');
+require('./lib/passport');
 
 //Settings
 app.set('port', process.env.PORT || 8080);
@@ -23,8 +26,17 @@ app.use(myconnection(mysql, {
     user: 'root',
     password: '',
     port: 3306,
-    database: 'gamersite'
+    database: 'gamer_site'
 }, 'single'));
+
+app.use(sesion({
+    secret: 'new-sesion',
+    resave: 'false',
+    saveUninitialized: false,
+}))
+
+app.use(passport.initialize())
+app.use(passport.session())
 
 app.use(express.urlencoded({ extended: false }));
 
