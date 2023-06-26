@@ -28,6 +28,10 @@ router.get('/user', GameController.user);
 
 router.get('/dashboard', GameController.dashboard);
 
+router.get('/Add-dashboard', GameController.AddGame);
+
+router.post('/Add-dashboard', GameController.AddGame);
+
 /* logout */
 
 router.get('/logout', GameController.logout);

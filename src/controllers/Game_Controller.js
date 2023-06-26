@@ -118,6 +118,29 @@ controller.dashboard = (req, res) => {
     }
 };
 
+
+controller.Add = (req, res) => {
+    if (req.session.loggedin == true) {
+        const userName = req.session.nombre_usuario;
+        res.render('add-edit/Add-dashboard.ejs', { userName: userName });
+    } else {
+        res.redirect('/')
+    }
+};
+
+controller.AddGame = (req, res) => {
+    const nombre_usuario = req.session.nombre_usuario;
+    const newGame = req.body;
+    const fechaLanzamiento = new Date(newGame.fecha_lanzamiento).toISOString();
+    req.getConnection((err, conn) => {
+        // Insertar los datos en la tabla de datos_usuario
+        conn.query('INSERT INTO juegos (nombre_usuario, nombre_juego, descripcion, requisitos_sistema, link_descarga, fecha_lanzamiento) VALUES (?, ?, ?, ?, ?, ?)', [nombre_usuario, newGame.nombre_juego, newGame.descripcion, newGame.requisitos_sistema, newGame.link_descarga, fechaLanzamiento], (err, result) => {
+            if (err) throw err;
+            res.redirect('/dashboard');
+        });
+    });
+};
+
 controller.logout = (req, res) => {
     if (req.session.loggedin == true) {
         req.session.destroy()
