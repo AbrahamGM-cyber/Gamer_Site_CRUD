@@ -6,11 +6,13 @@ const myconnection = require('express-myconnection');
 const cookieParser = require('cookie-parser');
 const sesion = require('express-session')
 const passport = require('passport');
+const flash = require('connect-flash');
+const bodyParser = require('body-parser');
 
 //iniciarlizarse
 const app = express();
 const { urlencoded } = require('express');
-require('./lib/passport');
+require('./lib/passport')
 
 //Settings
 app.set('port', process.env.PORT || 8080);
@@ -22,18 +24,36 @@ app.use(morgan('dev'));
 app.use(cookieParser());
 app.use(express.json());
 app.use(myconnection(mysql, {
-    host: '127.0.0.1',
+    host: 'localhost',
     user: 'root',
     password: '',
     port: 3306,
     database: 'gamer_site'
-}, 'single'));
+}));
 
+//Sesion
 app.use(sesion({
     secret: 'new-sesion',
-    resave: 'false',
-    saveUninitialized: false,
-}))
+    resave: true,
+    saveUninitialized: true
+}));
+
+//BodyParser
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
+
+app.use(bodyParser.json());
+
+//flash
+app.use(flash());
+
+app.use((req, res, next) => {
+    res.locals.success = req.flash('success');
+    res.locals.message = req.flash('message');
+    next();
+});
+//passport
 
 app.use(passport.initialize())
 app.use(passport.session())
@@ -42,6 +62,7 @@ app.use(express.urlencoded({ extended: false }));
 
 //Routes
 app.use(require('./routes'));
+
 
 //static files
 app.use(express.static(path.join(__dirname, 'public')))

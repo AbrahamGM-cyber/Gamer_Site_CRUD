@@ -1,0 +1,84 @@
+<%- include('login-register-style.ejs') %>
+
+    <body class="body">
+        <div class="signup-box">
+            <div class="signup-content">
+                <h2 class="signup-title">Registro</h2>
+
+                <% if (message && message.length>0) { %>
+                    <div class="container">
+                        <div class="alert" style="color: red; font-family: Arial, Helvetica, sans-serif; font-weight: 500; font-size: 0.9rem; background-color: rgb(246, 163, 163);" role="alert">
+                            <% message %>
+                        </div>
+                    </div>
+                    <% }%>
+
+                        <form action="" method="POST">
+                            <div class="user-details">
+                                <div class="input-box-register">
+                                    <label>Nombre Completo</label>
+                                    <input type="text" class="text" name="nombre_completo" placeholder="Ingrese su numero completo" required>
+                                    <span class="details"></span>
+                                </div>
+                                <div class="input-box-register">
+                                    <label>Nombre de Usuario</label>
+                                    <input type="text" class="text" name="nombre_usuario" placeholder="Ingrese su nombre de usuario" required>
+                                    <span class="details"></span>
+                                </div>
+                                <div class="input-box-register">
+                                    <label>Correo Electronico</label>
+                                    <input type="email" class="text" name="correo_electronico" placeholder="Ingrese su Correo Electronico" required>
+                                    <span class="details"></span>
+                                </div>
+                                <div class="input-box-register">
+                                    <label>Telefono</label>
+                                    <input type="phone" class="text" name="telefono" placeholder="+58" required>
+                                    <span class="details"></span>
+                                </div>
+                                <div class="input-box-register">
+                                    <label>Contraseña</label>
+                                    <input type="password" class="text" name="contraseña" placeholder="Ingrese su contraseña" minlength="8" required>
+                                    <span class="details"></span>
+                                </div>
+
+                                <div class="input-box-register">
+                                    <label>Fecha de registro</label>
+                                    <input type="date" class="text" name="fecha_registro" required>
+                                    <span class="details"></span>
+                                </div>
+
+                            </div>
+                            <div class="gender-details">
+                                <input type="radio" name="genero" id="dot-1">
+                                <input type="radio" name="genero" id="dot-2">
+                                <input type="radio" name="genero" id="dot-3">
+                                <span class="gender-title">Gender</span>
+                                <div class="gender-select">
+                                    <label for="dot-1">
+                                <span class="dot one"></span>
+                                <span class="gender">Male</span>
+                            </label>
+                                    <label for="dot-2">
+                                <span class="dot two"></span>
+                                <span class="gender">Female</span>
+                            </label>
+                                    <label for="dot-3">
+                                <span class="dot three"></span>
+                                <span class="gender">Prefer not to say</span>
+                            </label>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn">Registrate</button>
+                            <div class="login-register">
+                                <p> ya tienes cuenta?
+                                    <a href="login" class="register-link">Signin</a>
+                                </p>
+                            </div>
+
+                        </form>
+            </div>
+        </div>
+    </body>
+
+
+    </html>

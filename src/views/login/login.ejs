@@ -1,0 +1,47 @@
+<%- include('login-register-style.ejs') %>
+    <html>
+
+    <body class="body">
+        <div class="login-box">
+            <a href="/">
+                <span class="icon-close">
+                <img src="/svg/times.svg">
+            </span>
+            </a>
+            <div class="login-content">
+                <h2 class="login-title">Login</h2>
+                <% if (message && message.length>0) { %>
+                    <div style="text-align: center;">
+                        <div class="alert" style="color: red; font-family: Arial, Helvetica, sans-serif; font-weight: 500; font-size: 0.9rem; background-color: rgb(246, 163, 163);" role="alert">
+                            <% message %>
+                        </div>
+                    </div>
+                    <% }%>
+                        <form action="" method="POST">
+                            <div class="user-details">
+                                <div class="input-box">
+                                    <input type="email" class="text" name="correo_electronico" required>
+                                    <span class="details"></span>
+                                    <label>Email</label>
+                                </div>
+                                <div class="input-box">
+                                    <input type="password" name="contraseña" required>
+                                    <span class="details"></span>
+                                    <label>Password</label>
+                                </div>
+                            </div>
+                            <div class="remember-forgot">
+                                <a href="#">Olvidaste tu contraseña?</a>
+                            </div>
+                            <button type="submit" class="btn">Login</button>
+                            <div class="login-register">
+                                <p> No tiene cuenta?
+                                    <a href="registro" class="register-link">Registrate</a>
+                                </p>
+                            </div>
+                        </form>
+            </div>
+        </div>
+    </body>
+
+    </html>

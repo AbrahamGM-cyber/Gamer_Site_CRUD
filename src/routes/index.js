@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const passport = require('passport')
 
 const GameController = require('../controllers/Game_Controller');
 /* GET home page. */
@@ -19,7 +20,17 @@ router.post('/login', GameController.signin);
 /* Registro */
 router.get('/registro', GameController.registro);
 
-router.post('/signup', GameController.signup);
+router.post('/registro', GameController.signup);
+
+/* user */
+
+router.get('/user', GameController.user);
+
+router.get('/dashboard', GameController.dashboard);
+
+/* logout */
+
+router.get('/logout', GameController.logout);
 
 /* Contact */
 

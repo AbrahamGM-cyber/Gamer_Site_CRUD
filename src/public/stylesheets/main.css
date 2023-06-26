@@ -441,6 +441,21 @@ img {
     color: var(--first-color-alt);
 }
 
+.link_btn {
+    font-family: Arial, Helvetica, sans-serif;
+    display: inline-block;
+    background: linear-gradient(135deg, blueviolet, rgb(26, 16, 91));
+    color: #FFF;
+    padding: 1rem;
+    border-radius: .5rem;
+    font-weight: var(--font-medium);
+}
+
+.link_btn:hover {
+    background: linear-gradient(135deg, rgb(161, 70, 246), rgb(54, 37, 170));
+    transition: .5s;
+}
+
 
 /*--===================================ABOUT======================================--*/
 
@@ -795,6 +810,7 @@ thead th {
     background-color: blueviolet;
     color: #FFF;
     font-size: var(--mb-1);
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 th,

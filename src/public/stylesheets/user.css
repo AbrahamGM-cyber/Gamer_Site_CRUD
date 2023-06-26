@@ -1,80 +1,168 @@
-/*========= GOOGLE FONTS ==========*/
-
-@font-face {
-    font-family: 'Gamer';
-    src: url('../fonts/Gamer.ttf');
-}
-
-
-/*========= 5rem = 8px, 1rem = 16px, 1.5rem= 24px ==========*/
-
-:root {
-    --big-font-size: 2rem;
-    --h1-font-size: 1.5rem;
-    --h2-font-size: 1.25rem;
-    --h3-font-size: 1.125rem;
-    --normal-font-size: .938rem;
-    --small-font-size: .813rem;
-    --smaller-font-size: .75rem;
-    /*========= Font weight ==========*/
-    --font-medium: 500;
-    --font-semi-bold: 600;
-    /*========= Margenes Botton ==========*/
-    /* .25rem = 4px, .5rem = 8px, .75rem= 12px ...*/
-    --mb-0-25: .25rem;
-    --mb-0-5: .5rem;
-    --mb-0-75: .75rem;
-    --mb-1: 1rem;
-    --mb-1-5: 1.5rem;
-    --mb-2: 2rem;
-    --mb-2-5: 2.5rem;
-    --mb-3: 3rem;
-    /*========= z index ==========*/
-    --z-tooltip: 10;
-    --z-fixed: 100;
-    --z-modal: 1000;
-    /*=========== Opacidad ==========*/
-    --opacidad-negro: 0.8;
-}
-
-
-/*Font size for Large devices */
-
-@media screen and (min-width: 968px) {
-     :root {
-        --big-font-size: 3rem;
-        --h1-font-size: 2.25rem;
-        --h2-font-size: 1.5rem;
-        --h3-font-size: 1.25rem;
-        --normal-font-size: 1rem;
-        --small-font-size: .875rem;
-        --smaller-font-size: .813rem;
-    }
-}
-
-
-/*================================*/
-
 * {
     margin: 0;
     padding: 0;
+    text-decoration: none;
+    list-style: none;
     box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
-.body {
-    display: flex;
+nav {
+    background: rgb(101, 32, 167);
+    line-height: 70px;
+    position: fixed;
+    width: 100%;
+}
+
+label {
+    line-height: 80px;
+    font-size: 2rem;
+    font-weight: 300;
+    color: white;
+    margin-left: 50px;
+    cursor: pointer;
+}
+
+nav ul {
+    float: right;
+    margin-right: 20px;
+}
+
+nav ul li {
+    line-height: 80px;
+    margin: 0 10px;
+}
+
+nav ul li a {
+    color: white;
+    font-size: 1.2rem;
+    padding: 6px 15px;
+    font-weight: 600;
+    background: linear-gradient(135deg, blueviolet, rgb(26, 16, 91));
+    border-radius: 3px;
+    border: 3px solid white;
+}
+
+nav ul li a:hover {
+    background: linear-gradient(135deg, rgb(161, 70, 246), rgb(54, 37, 170));
+    transition: .5s;
+}
+
+.side-menu-user {
+    position: fixed;
+    background: rgb(55, 17, 90);
+    width: 250px;
+    margin-top: 82px;
     height: 100vh;
-    justify-content: center;
-    align-items: center;
-    padding: 10px;
-    background: linear-gradient(135deg, blueviolet, rgb(247, 3, 190));
 }
 
-.grid {
-    display: grid;
-    gap: 1.5rem;
+.user_img {
+    height: 120px;
+    width: 120px;
+    border-radius: 50%;
+    margin-top: 30px;
+    border: 3px solid white;
 }
+
+.side-menu-user center h2 {
+    color: white;
+}
+
+.side-menu-user a {
+    display: block;
+    line-height: 60px;
+    transition: 0.5s;
+}
+
+.side-menu-user a:hover {
+    display: block;
+    padding-left: 20px;
+    transition: .5s;
+}
+
+.side-menu-user span {
+    font-size: 1.1rem;
+    margin-left: 20px;
+    color: white;
+}
+
+.user-icon {
+    padding-top: 10px;
+    margin-left: 20px;
+    width: 30px;
+    height: 30px;
+}
+
+.user-icon-menu {
+    padding-top: 10px;
+    width: 40px;
+    height: 42px;
+}
+
+nav .menu-bar {
+    margin-top: 20px;
+    float: right;
+    margin-right: 20px;
+    display: none;
+}
+
+#menu {
+    display: none;
+}
+
+.side-menu-user .Logout {
+    display: none;
+}
+
+
+/*========================BODY==========================*/
+
+body {
+    display: block;
+    background-color: rgb(0, 0, 67);
+}
+
+
+/*========================SECTION==========================*/
+
+section {
+    display: flex;
+    max-width: 780px;
+    margin-left: 270px;
+    margin-top: 60px;
+}
+
+.section_title_head {
+    font-size: 2.3rem;
+    margin-bottom: .870rem;
+    font-weight: 500;
+    color: #FFF;
+}
+
+.section_subtitle_head {
+    display: block;
+    font-size: 1.2rem;
+    font-weight: 400;
+    margin-bottom: 1rem;
+    color: #FFF;
+}
+
+.section_title {
+    font-size: 4rem;
+}
+
+.section_subtitle {
+    display: block;
+    font-size: 1rem;
+    margin-bottom: 3rem;
+}
+
+.home_text {
+    text-align: justify;
+}
+
+
+/**/
 
 
 /*====================SIGNUP====================*/
@@ -134,200 +222,3 @@ form .user-details .input-box-register {
 .user-details .input-box-register input:valid {
     border-color: blueviolet;
 }
-
-form .gender-details .gender-title {
-    font-size: 1.1rem;
-    font-weight: var(--font-medium);
-}
-
-form .gender-details .gender-select {
-    display: flex;
-    width: 80%;
-    margin: 14px 0;
-    justify-content: space-between;
-}
-
-.gender-details .gender-select label {
-    display: flex;
-    align-items: center;
-}
-
-.gender-details .gender-select .dot {
-    height: 20px;
-    width: 20px;
-    background: #d9d9d9;
-    border-radius: 50%;
-    margin-right: 10px;
-    border: 5px solid transparent;
-    transition: all 0.3s ease;
-}
-
-#dot-1:checked~.gender-select label .one,
-#dot-2:checked~.gender-select label .two,
-#dot-3:checked~.gender-select label .three {
-    border-color: #d9d9d9;
-    background: blueviolet;
-}
-
-form input[type="radio"] {
-    display: none;
-}
-
-
-/*.input-box-register {
-    position: relative;
-    width: 100%;
-    height: 50px;
-    border-bottom: 2px solid #162938;
-    margin: 30px 0;
-}
-
-.input-box-register input {
-    width: 100%;
-    height: 100%;
-    font-size: var(--normal-font-size);
-    color: #162938;
-    font-weight: 500;
-    padding: 0 35px 0 5px;
-}
-
-
-/*====================Login====================*/
-
-.login-box {
-    position: relative;
-    width: 400px;
-    height: 460px;
-    background: white;
-    border: 2px solid rgba(255, 255, 255, .5);
-    backdrop-filter: blur(20px);
-    display: flex;
-    border-radius: 10px;
-    justify-content: center;
-    align-items: center;
-}
-
-.login-box .icon-close {
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 45px;
-    height: 45px;
-    background: blueviolet;
-    font-size: .8rem;
-    color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-bottom-left-radius: 20px;
-    cursor: pointer;
-    z-index: 1;
-}
-
-.login-box .login-content {
-    width: 100%;
-    padding: 40px;
-}
-
-.login-title {
-    font-family: 'Gamer';
-    font-size: 4rem;
-    text-align: center;
-}
-
-.input-box {
-    position: relative;
-    width: 100%;
-    height: 50px;
-    border-bottom: 2px solid #162938;
-    margin: 30px 0;
-}
-
-.input-box label {
-    position: absolute;
-    top: 50%;
-    left: 5px;
-    translate: translateY(-50%);
-    font-size: 1rem;
-    color: #162938;
-    font-weight: 500;
-    pointer-events: none;
-    transition: .5s;
-}
-
-.input-box input:focus~label,
-.input-box input:valid~label {
-    top: -6px;
-}
-
-.input-box input {
-    width: 100%;
-    height: 100%;
-    background: transparent;
-    border: none;
-    outline: none;
-    font-size: 1rem;
-    color: #162938;
-    font-weight: 500;
-    padding: 0 35px 0 5px;
-}
-
-.remember-forgot {
-    font-size: 0.9rem;
-    color: #162938;
-    font-weight: 500;
-    margin: -15px 0 15px;
-    display: flex;
-    justify-content: space-between;
-}
-
-.remember-forgot label input {
-    accent-color: #162938;
-    margin-left: 3px;
-}
-
-.remember-forgot a {
-    color: #162938;
-    text-decoration: none;
-}
-
-.remember-forgot a:hover {
-    text-decoration: underline;
-}
-
-.btn {
-    width: 100%;
-    height: 45px;
-    background-color: blueviolet;
-    border: none;
-    outline: none;
-    border-radius: 7px;
-    cursor: pointer;
-    font-size: 1rem;
-    color: white;
-    font-weight: 500;
-}
-
-.login-register {
-    font-size: .9rem;
-    color: #162938;
-    text-align: center;
-    font-weight: 500;
-    margin: 25px 0 10px;
-}
-
-.login-register p a {
-    color: #162938;
-    text-decoration: none;
-    font-weight: 600;
-}
-
-.login-register p a:hover {
-    text-decoration: underline;
-}
-
-
-/*====================USER====================*/
-
-
-/*====================MEDIA QUERYS====================*/

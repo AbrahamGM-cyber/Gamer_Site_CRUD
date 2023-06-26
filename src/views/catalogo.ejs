@@ -35,6 +35,9 @@
                             <th>
                                 Fecha de lanzamiento
                             </th>
+                            <th>
+                                Link
+                            </th>
                         </tr>
                     </thead>
                     <tbody>
@@ -53,6 +56,9 @@
                                     </td>
                                     <td class="cuerpo">
                                         <%= data[i].fecha_lanzamiento %>
+                                    </td>
+                                    <td class="botones">
+                                        <a href="<%= data[i].link %>" class="link_btn">Descargar</a>
                                     </td>
                                 </tr>
 

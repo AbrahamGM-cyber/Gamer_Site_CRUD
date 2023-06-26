@@ -1,0 +1,25 @@
+const newUser = req.body;
+req.getConnection((err, conn) => {
+    conn.query('SELECT * FROM usuarios WHERE correo_electronico = ?', [newUser.correo_electronico], (err, userdata) => {
+        if (userdata.length > 0) {
+            req.flash('message', 'user alredy exists');
+            res.render('login/registro.ejs');
+        } else {
+
+            bcrypt.hash(newUser.contraseña, 12).then(hash => {
+                newUser.contraseña = hash;
+
+                req.getConnection((err, conn) => {
+                    conn.query('INSERT INTO usuarios SET ?', [newUser], (err, usuarios) => {
+                        if (err) {
+                            res.json(err);
+                        }
+                        req.flash('success', 'user save successfully');
+                        res.render('login/login.ejs');
+                    });
+                });
+            });
+        }
+
+    });
+});

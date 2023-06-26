@@ -1,6 +1,5 @@
 const passport = require('passport');
 const bcrypt = require('bcryptjs');
-
 const controller = {};
 //home
 controller.home = (req, res) => { res.render('main.ejs') };
@@ -22,33 +21,109 @@ controller.catalogo = (req, res) => {
 controller.about = (req, res) => { res.render('about.ejs') };
 
 //login
-controller.login = (req, res) => { res.render('login.ejs') };
+controller.login = (req, res) => {
+    if (req.session.loggedin != true) {
+        res.render('login/login.ejs');
+    } else {
+        res.redirect('user')
+    }
 
-controller.signin = (req, res) => {
-    console.log(req.body)
-    res.send('received')
 };
 
-
-//resgitro
-controller.registro = (req, res) => { res.render('registro.ejs') };
-
-controller.signup = (req, res) => {
+controller.signin = (req, res) => {
     const newUser = req.body;
+    const { contraseña } = req.body
+    req.getConnection((err, conn) => {
+        conn.query('SELECT * FROM usuarios WHERE correo_electronico = ?', [newUser.correo_electronico], (err, userdata) => {
 
-    bcrypt.hash(newUser.contraseña, 12).then(hash => {
-        newUser.contraseña = hash;
+            if (userdata.length > 0) {
+                const storedUser = userdata[0];
 
-        req.getConnection((err, conn) => {
-            conn.query('INSERT INTO usuarios set ?', [newUser], (err, usuarios) => {
-                res.redirect('/')
-            });
+                bcrypt.compare(contraseña, storedUser.contraseña, (err, isMatch) => {
+                    if (isMatch) {
+                        // Las contraseñas coinciden, almacenar el nombre de usuario en la sesión y redirigir al usuario a la página de usuario
+                        req.session.loggedin = true;
+                        req.session.nombre_usuario = storedUser.nombre_usuario;
+                        res.redirect('user');
+                    } else {
+                        // Las contraseñas no coinciden, mostrar un mensaje de error al usuario
+                        res.render('login/login.ejs');
+                        console.log('Error');
+                    }
+                });
+
+            } else {
+                // El usuario no está registrado, redirigir al usuario a la página de registro
+                res.render('login/registro.ejs')
+            }
+
         });
     });
 };
 
 
+//registro
+controller.registro = (req, res) => {
+    if (req.session.loggedin != true) {
+        res.render('login/registro.ejs');
+    } else {
+        res.redirect('user')
+    }
+};
 
+controller.signup = (req, res) => {
+    const newUser = req.body;
+    req.getConnection((err, conn) => {
+        conn.query('SELECT * FROM usuarios WHERE correo_electronico = ?', [newUser.correo_electronico], (err, userdata) => {
+            if (userdata.length > 0) {
+                req.flash('message', 'user alredy exists');
+                res.render('login/registro.ejs');
+            } else {
+
+                bcrypt.hash(newUser.contraseña, 10).then(hash => {
+                    newUser.contraseña = hash;
+
+                    req.getConnection((err, conn) => {
+                        conn.query('INSERT INTO usuarios SET ?', [newUser], (err, usuarios) => {
+                            if (err) {
+                                res.json(err);
+                            }
+                            req.flash('success', 'user save successfully');
+                            res.redirect('login');
+                        });
+                    });
+                });
+            }
+
+        });
+    });
+};
+
+//usuario
+controller.user = (req, res) => {
+    if (req.session.loggedin == true) {
+        const userName = req.session.nombre_usuario; // Obtener el nombre de usuario de la sesión
+        res.render('user/user.ejs', { userName: userName }); // Renderizar la vista de usuario con el nombre de usuario
+    } else {
+        res.redirect('/')
+    }
+};
+
+controller.dashboard = (req, res) => {
+    if (req.session.loggedin == true) {
+        const userName = req.session.nombre_usuario;
+        res.render('user/dashboard.ejs', { userName: userName });
+    } else {
+        res.redirect('/')
+    }
+};
+
+controller.logout = (req, res) => {
+    if (req.session.loggedin == true) {
+        req.session.destroy()
+        res.redirect('login')
+    }
+};
 //contactme
 controller.contactme = (req, res) => { res.render('contact.ejs') };
 
