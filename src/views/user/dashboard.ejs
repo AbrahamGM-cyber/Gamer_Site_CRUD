@@ -3,43 +3,75 @@
     <body>
         <main class="main">
             <!--===================================HOME======================================-->
-            <section class="home" id="juegos">
-                <div class="dashboard_bg " id="home">
-                    <div class="home_text">
-                        <h1 class="section_title_head-dashboard ">Crea Tu juego</h1>
-                        <p class="section_subtitle_head ">Crea Tu juego</p>
-                        <form action="" method="post">
-                            <div class="form-group">
-                                <label class="label_input" for="nombre_juego">Nombre del juego:</label>
-                                <input type="text" id="nombre_juego" name="nombre_juego" class="form-control" required>
-                            </div>
+            <section class="dashboard" id="juegos">
+                <div class="bg_dashboard">
+                    <div class="container_text">
+                        <h2 class="title">
+                            Mis Juegos
+                        </h2>
+                        <p class="text">
 
-                            <div class="form-group">
-                                <label class="label_input" for="descripcion">Descripción:</label>
-                                <textarea id="descripcion" name="descripcion" class="form-control"></textarea>
-                            </div>
+                        </p>
 
-                            <div class="form-group">
-                                <label class="label_input" for="requisitos_sistema">Requisitos del sistema:</label>
-                                <textarea id="requisitos_sistema" name="requisitos_sistema" class="form-control"></textarea>
-                            </div>
-
-                            <div class="form-group">
-                                <label class="label_input" for="link_descarga">Link de descarga:</label>
-                                <input type="text" id="link_descarga" name="link_descarga" class="form-control" required>
-                            </div>
-
-                            <div class="form-group">
-                                <label class="label_input" for="fecha_lanzamiento">Fecha de lanzamiento:</label>
-                                <input type="date" id="fecha_lanzamiento" name="fecha_lanzamiento" class="form-control" required>
-                            </div>
-
-                            <button type="submit" class="btn_submit">Crear juego</button>
-                            <br>
-                            <br>
-                        </form>
+                        <a href="Add-dashboard"><img src="/img/Crea tu juego.jpeg " class="btn_add"></a>
+                        <div></div>
                     </div>
+                </div>
             </section>
+
+            <div class="table">
+                <div class="table_section">
+                    <table class="table table-id">
+                        <thead>
+                            <tr>
+                                <th>
+                                    Nombre
+                                </th>
+                                <th>
+                                    Descripcion
+                                </th>
+                                <th>
+                                    Requisitos
+                                </th>
+                                <th>
+                                    Fecha de lanzamiento
+                                </th>
+                                <th>
+                                    Link
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% if (data){%>
+                                <%for(var i=0; i< data.length; i++ ) { %>
+
+                                    <tr>
+                                        <td class="cuerpo">
+                                            <%= data[i].nombre_juego %>
+                                        </td>
+                                        <td class="cuerpo">
+                                            <%= data[i].descripcion %>
+                                        </td>
+                                        <td class="cuerpo">
+                                            <%= data[i].requisitos_sistema %>
+                                        </td>
+                                        <td class="cuerpo">
+                                            <%= data[i].fecha_lanzamiento %>
+                                        </td>
+                                        <td class="botones">
+                                            <a href="<%= data[i].link %>" class="link_btn">Descargar</a>
+                                        </td>
+                                    </tr>
+
+                                    <%}%>
+                                        <%}%>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="pagination">
+
+                </div>
+            </div>
         </main>
     </body>
 

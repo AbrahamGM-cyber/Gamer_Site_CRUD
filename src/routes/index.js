@@ -28,7 +28,7 @@ router.get('/user', GameController.user);
 
 router.get('/dashboard', GameController.dashboard);
 
-router.get('/Add-dashboard', GameController.AddGame);
+router.get('/Add-dashboard', GameController.Add);
 
 router.post('/Add-dashboard', GameController.AddGame);
 

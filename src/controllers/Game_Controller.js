@@ -112,7 +112,17 @@ controller.user = (req, res) => {
 controller.dashboard = (req, res) => {
     if (req.session.loggedin == true) {
         const userName = req.session.nombre_usuario;
-        res.render('user/dashboard.ejs', { userName: userName });
+        req.getConnection((err, conn) => {
+            if (err) throw err;
+
+            // Realizar una consulta para recuperar los datos del usuario
+            conn.query('SELECT * FROM juegos WHERE nombre_usuario = ?', [userName], (err, results) => {
+                if (err) throw err;
+
+                // Renderizar la vista EJS con los datos del usuario
+                res.render('user/dashboard.ejs', { data: results, userName: userName });
+            });
+        });
     } else {
         res.redirect('/')
     }
@@ -122,7 +132,7 @@ controller.dashboard = (req, res) => {
 controller.Add = (req, res) => {
     if (req.session.loggedin == true) {
         const userName = req.session.nombre_usuario;
-        res.render('add-edit/Add-dashboard.ejs', { userName: userName });
+        res.render('user/Add-dashboard.ejs', { userName: userName });
     } else {
         res.redirect('/')
     }
