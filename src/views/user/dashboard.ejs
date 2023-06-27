@@ -36,8 +36,8 @@
                                 <th>
                                     Fecha de lanzamiento
                                 </th>
-                                <th>
-                                    Link
+                                <th id="edit">
+                                    Edicion
                                 </th>
                             </tr>
                         </thead>
@@ -59,7 +59,9 @@
                                             <%= data[i].fecha_lanzamiento %>
                                         </td>
                                         <td class="botones">
-                                            <a href="<%= data[i].link %>" class="link_btn">Descargar</a>
+                                            <a href="/delete/<%= data[i].ID_juego %> " class="btn-trash">Borrar</a>
+                                            <a href="/edit/<%= data[i].ID_juego %> " class="btn-edit">Editar</a>
+
                                         </td>
                                     </tr>
 

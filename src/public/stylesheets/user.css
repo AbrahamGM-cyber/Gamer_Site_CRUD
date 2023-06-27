@@ -134,6 +134,12 @@ body {
     background-color: rgb(0, 0, 67);
 }
 
+.bg-add-edit {
+    display: block;
+    background-image: url("../img/rsz_background.jpg");
+    background-size: 2110px;
+}
+
 
 /*========================SECTION==========================*/
 
@@ -215,6 +221,7 @@ section {
 }
 
 .table {
+    margin-top: 15px;
     align-items: center;
     margin-left: 140px;
     max-width: 900px;
@@ -269,6 +276,34 @@ td {
     font-size: .870rem;
 }
 
+#edit {
+    text-align: center;
+}
+
+.botones {
+    text-align: center;
+}
+
+.btn-trash {
+    color: white;
+    width: 30px;
+    height: 30px;
+    padding: 3px 6px;
+    margin: 5px;
+    background-color: #b40000;
+    border: 0.900px solid rgba(255, 255, 255, .5);
+}
+
+.btn-edit {
+    color: white;
+    width: 30px;
+    height: 30px;
+    padding: 3px 6px;
+    margin: 5px;
+    background-color: #b4b400;
+    border: 0.900px solid rgba(255, 255, 255, .5);
+}
+
 
 /*====================TEXT====================*/
 
@@ -321,7 +356,7 @@ td {
 }
 
 .btn_add {
-    width: 325px;
+    width: 350px;
     height: 100px;
 }
 

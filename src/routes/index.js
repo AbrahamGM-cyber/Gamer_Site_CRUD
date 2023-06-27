@@ -28,9 +28,21 @@ router.get('/user', GameController.user);
 
 router.get('/dashboard', GameController.dashboard);
 
+/* Add Game */
+
 router.get('/Add-dashboard', GameController.Add);
 
 router.post('/Add-dashboard', GameController.AddGame);
+
+/* Edit Game */
+
+router.get('/edit/:ID_juego', GameController.Edit);
+
+router.post('/edit/:ID_juego', GameController.EditGame);
+
+/* Delete Game */
+
+router.get('/delete/:ID_juego', GameController.delete);
 
 /* logout */
 

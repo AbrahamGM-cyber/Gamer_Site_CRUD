@@ -151,6 +151,50 @@ controller.AddGame = (req, res) => {
     });
 };
 
+
+//EditGame
+controller.Edit = (req, res) => {
+    if (req.session.loggedin == true) {
+        const userName = req.session.nombre_usuario;
+        const game_id = req.params.ID_juego; // Obtener el ID del juego a editar de los parámetros de la URL
+
+        req.getConnection((err, conn) => {
+            conn.query('SELECT * FROM juegos WHERE ID_juego = ?', [game_id], (err, result) => {
+                res.render('user/Edit-dashboard.ejs', {
+                    userName: userName,
+                    data: result[0]
+                });
+            });
+        });
+    } else {
+        res.redirect('/')
+    }
+
+};
+
+controller.EditGame = (req, res) => {
+    const nombre_usuario = req.session.nombre_usuario;
+    const game_id = req.params.ID_juego; // Obtener el ID del juego a editar de los parámetros de la URL
+    const updatedGame = req.body; // Obtener los datos actualizados del juego desde el cuerpo de la solicitud
+
+    req.getConnection((err, conn) => {
+        conn.query('UPDATE juegos SET nombre_juego = ?, descripcion = ?, requisitos_sistema = ?, link_descarga = ?, fecha_lanzamiento = ? WHERE ID_juego = ?', [updatedGame.nombre_juego, updatedGame.descripcion, updatedGame.requisitos_sistema, updatedGame.link_descarga, updatedGame.fechaLanzamiento, game_id], (err, result) => {
+            if (err) throw err;
+            res.redirect('/dashboard');
+        });
+    });
+};
+
+controller.delete = (req, res) => {
+    const game_id = req.params.ID_juego;
+    req.getConnection((err, conn) => {
+        conn.query('DELETE FROM juegos WHERE ID_juego = ?', [game_id], (err, juegos) => {
+            res.redirect('/dashboard');
+        });
+    })
+};
+
+//Logout
 controller.logout = (req, res) => {
     if (req.session.loggedin == true) {
         req.session.destroy()

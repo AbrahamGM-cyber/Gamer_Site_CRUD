@@ -1,0 +1,44 @@
+<%- include('sidebar.ejs') %>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/user.css">
+
+    <body>
+        <main class="main">
+            <!--===================================HOME======================================-->
+            <section class="home" id="juegos">
+                <div class="dashboard_bg " id="home">
+                    <div class="home_text">
+                        <h1 class="section_title_head-dashboard ">Editando informacion del juego</h1>
+                        <p class="section_subtitle_head ">Edita y añade informaciona acerca de tu juego favorito</p>
+                        <form action="" method="post">
+                            <div class="form-group">
+                                <label class="label_input" for="nombre_juego">Nombre del juego:</label>
+                                <input type="text" id="nombre_juego" name="nombre_juego" value="<%= data.nombre_juego %>" class=" form-control " required>
+                            </div>
+
+                            <div class="form-group ">
+                                <label class="label_input " for="descripcion ">Descripción:</label>
+                                <textarea id="descripcion " name="descripcion" value="<%= data.descripcion %> " class="form-control"></textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="label_input" for="requisitos_sistema">Requisitos del sistema:</label>
+                                <textarea id="requisitos_sistema" name="requisitos_sistema" value="<%= data.requisitos_sistema %> " class=" form-control "></textarea>
+                            </div>
+
+                            <div class="form-group ">
+                                <label class="label_input " for="link_descarga ">Link de descarga:</label>
+                                <input type="text " id="link_descarga " name="link_descarga" value="<%= data.link_descarga %> " class="form-control " required>
+                            </div>
+
+                            <button type="submit " class="btn_submit ">Actualizar juego</button>
+                            <br>
+                            <br>
+                        </form>
+                    </div>
+            </section>
+        </main>
+    </body>
+
+    </html>
+
+    <!--value="<%= data.nombre_juego %> "-->
