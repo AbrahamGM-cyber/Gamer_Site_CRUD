@@ -292,6 +292,7 @@ td {
     margin: 5px;
     background-color: #b40000;
     border: 0.900px solid rgba(255, 255, 255, .5);
+    border-radius: 5px;
 }
 
 .btn-edit {
@@ -302,6 +303,7 @@ td {
     margin: 5px;
     background-color: #b4b400;
     border: 0.900px solid rgba(255, 255, 255, .5);
+    border-radius: 5px;
 }
 
 
@@ -324,7 +326,7 @@ td {
 }
 
 .container_text {
-    flex-basis: 40%;
+    flex-basis: 50%;
     padding-left: 40px;
     overflow: hidden;
     color: #fff;
@@ -347,7 +349,7 @@ td {
     background-image: linear-gradient(rgba(0, 0, 0, var(--opacidad-negro)), rgba(0, 0, 0, var(--opacidad-negro))), url(../img/Imagen_3.jpg);
     /*background-image: linear-gradient(rgba(0, 0, 0, var(--opacidad-negro)), rgba(0, 0, 0, var(--opacidad-negro))), url(/public/img/Imagen_3.jpg);*/
     position: relative;
-    height: 50vh;
+    height: 60vh;
     width: 100%;
     background-size: cover;
     display: flex;
@@ -358,6 +360,13 @@ td {
 .btn_add {
     width: 350px;
     height: 100px;
+    transition: .2s;
+    margin-left: 20px;
+}
+
+.btn_add:hover {
+    transform: scale(1.2);
+    /* Escalar el botón a un 120% cuando se hace hover sobre él */
 }
 
 
